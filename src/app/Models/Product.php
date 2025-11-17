@@ -22,11 +22,4 @@ class Product extends Model
         return $this->belongsToMany(Season::class)->withTimestamps();
     }
 
-    public function scopeNameSearch($query, $name)
-    {
-    if (!empty($name)) {
-        $query->where('name', 'like', '%' .$name .'%');
-    }
-        return $query;
-    }
 }

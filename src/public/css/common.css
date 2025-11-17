@@ -1,0 +1,10 @@
+.header{
+    max-width:1230px;
+}
+.header__inner{
+    padding:10px;
+}
+.header__logo{
+    font-family:'Roboto Condensed', sans-serif;
+    color: rgb(255, 238, 0);
+}

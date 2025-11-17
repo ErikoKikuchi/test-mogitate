@@ -36,15 +36,15 @@ class ProductController extends Controller
         if($request->has('season_id')){
         $product->seasons()->attach($request->season_id);
 
-        return redirect('/products');
+        return redirect('/');
         }
     }
     public function search(Request$request){
-        $products = Product::NameSearch($request->name)->paginate(6)->withQueryString();
-        return view('index',compact('products'));
-    }
-    public function sort(Request$request){
         $query = Product::query();
+        if($request->name){
+            $query->where('name', 'like', '%' .$request->name .'%');
+        }
+
         if($request-> price === 'asc'){
             $query->orderBy('price','asc');
         }elseif($request-> price === 'desc'){
@@ -52,5 +52,42 @@ class ProductController extends Controller
         }
         $products = $query->paginate(6)->withQueryString();
         return view('index',compact('products'));
+    }
+
+    public function edit($productId){
+        $detail = Product::find($productId);
+        $seasons= Season::all();
+        return view('detail',compact('detail','seasons'));
+    }
+    public function update(ProductRequest $request,$productId){
+        $product = Product::find($productId);
+        
+         //ファイルをパブリックに保存⇒パスの更新
+        if( $request->hasFile('image')){
+            $originalName=$request->file('image')->getClientOriginalName();
+            $path =$request->file('image')->storeAs('images', $originalName,'public');
+            }else{
+            $path = $product->image;}
+
+        $product ->update([
+            'name' => $request->name,
+            'price' => $request->price,
+            'image' => $path,
+            'description' => $request->description
+        ]);
+
+        //中間テーブル更新
+        if($request->has('season_id')){
+        $product->seasons()->sync($request->season_id);
+        }
+        return redirect('/');
+    }
+    public function destroy($productId){
+        $product = Product::find($productId);
+        if($product){
+            $product->seasons()->detach();
+            $product->delete();
+        }
+        return redirect('/');
     }
 }

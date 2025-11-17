@@ -3,3 +3,60 @@ svg.w-5.h-5 {
     width: 30px;
     height: 30px;
   }
+  .products__content{
+    background-color: rgb(249,249,249);
+}
+.products__content-title{
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  align-items: center;
+}
+.section__title{
+  color:rgb(134,134,134);
+}
+.products__add-button{
+  background-color:rgb(255,169,41) ;
+  color:black;
+  border-radius: 5px;
+  border:none;
+  font-weight: bold;
+  height:30px;
+  width: 100px;
+}
+.products__inner{
+  display: flex;
+}
+.search-form{
+  display:left;
+}
+.search-form__inner{
+
+}
+.search-form__item-input{
+
+}
+.search-form__button{
+
+}
+.search-form__button--submit{
+
+}
+.search-form__modal{
+
+}
+.card-list{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content: space-between;
+}
+.product-card__link{
+  max-width: 30%;
+}
+.product-card__inner{
+  background-color: white;
+  box-shadow:  0px 3px 10px rgba(0, 0, 0, 0.2);;
+}
+.product__image{
+  max-width :100%;
+}

@@ -23,16 +23,19 @@ class ProductRequest extends FormRequest
      */
     public function rules()
     {
+        //更新の時は画像を任意
+        $imageRule = $this->isMethod('patch')
+            ? ['nullable', 'file', 'image', 'mimes:jpeg,jpg,png']
+            : ['required', 'file', 'image', 'mimes:jpeg,jpg,png'];
         return [
-            'name' => 'required',
-            'price' => 'required|integer|between:0,10000',
-            'image' => 'required|file|image|mimes:jpeg,jpg,png',
-            'season_id' => 'required',
-            'description' => 'required|max:120'
-
+            'name' => ['required'],
+            'price' => ['required','integer','between:0,10000'],
+            'image' => $imageRule,
+            'season_id' => ['required'],
+            'description' => ['required','max:120'],
         ];
     }
-    public function message(){
+    public function messages(){
         return[
             'name.required' => '商品名を入力してください',
             'price.required'=> '値段を入力してください',
