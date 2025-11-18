@@ -14,7 +14,7 @@ use App\Http\Controllers\ProductController;
 |
 */
 
-Route::get('/', [ProductController::class,'index']);
+Route::get('/products', [ProductController::class,'index']);
 Route::get('/register',[ProductController::class,'show']);
 Route::post('/products/register',[ProductController::class,'store']);
 Route::get('/products/search',[ProductController::class,'search']);

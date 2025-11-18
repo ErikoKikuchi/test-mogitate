@@ -7,7 +7,7 @@
 @section('content')
 <div class="detail-form">
     <div class ="back-form">
-        <a class ="back-form__title" href="/">商品一覧</a>
+        <a class ="back-form__title" href="/products">商品一覧</a>
         <div class="back-form__inner">>{{$detail->name}}</div>
     </div>
     <div class="detail-form__inner">
@@ -92,7 +92,7 @@
                 </div>
             </div>
             <div class="detail-form__buttons">
-                <a class ="back-form__inner--submit" href="/">戻る</a>
+                <a class ="back-form__inner--submit" href="/products">戻る</a>
                 <button class = "update-form" type="submit">変更を保存</button>
             </div>
         </form>

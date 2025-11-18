@@ -36,7 +36,7 @@ class ProductController extends Controller
         if($request->has('season_id')){
         $product->seasons()->attach($request->season_id);
 
-        return redirect('/');
+        return redirect('/products');
         }
     }
     public function search(Request$request){
@@ -80,7 +80,7 @@ class ProductController extends Controller
         if($request->has('season_id')){
         $product->seasons()->sync($request->season_id);
         }
-        return redirect('/');
+        return redirect('/products');
     }
     public function destroy($productId){
         $product = Product::find($productId);
@@ -88,6 +88,6 @@ class ProductController extends Controller
             $product->seasons()->detach();
             $product->delete();
         }
-        return redirect('/');
+        return redirect('/products');
     }
 }

@@ -44,7 +44,30 @@
                 <p class = "register-form__item-title">商品画像</p>
                 <p class = "register-form__item-alert">必須</p>
             </div>
-                <input class = "register-form__item--button" type="file" name = "image" >
+            <div style="margin-top: 15px;">
+                 <img id="preview" src="#" alt="選択した画像を表示" style="max-width: 200px; display:none;">
+             </div>
+            <input class = "register-form__item--button" type="file" name = "image" id="image">
+            <script>
+            document.getElementById('image').addEventListener('change', function (e) {
+            const file = e.target.files[0];
+
+            if (!file) {
+            document.getElementById('preview').style.display = 'none';
+            return;
+            }
+
+            const reader = new FileReader();
+
+            reader.onload = function (event) {
+                const preview = document.getElementById('preview');
+                preview.src = event.target.result;
+                preview.style.display = 'block';
+            }
+
+            reader.readAsDataURL(file);
+            });
+            </script>
             <div class = "form__error">
                 @if($errors->has('image'))
                     <div class="form__error--all">
@@ -86,7 +109,7 @@
                 @endif
             </div>
             <div class = "form__button">
-                <a class="form__button--back" href = "/" >戻る</a>
+                <a class="form__button--back" href = "/products" >戻る</a>
                 <button class = "form__button--register" type="submit">登録</button>
             </div>
         </form>
