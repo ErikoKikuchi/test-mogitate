@@ -32,7 +32,7 @@
                         <img class = "product__image" src="{{asset('storage/'.$product->image)}}"></img>
                         <div class = "product__info">
                             <p class ="product__name">{{$product->name}}</p>
-                            <p class = "product__price">{{$product->price}}</p>
+                            <p class = "product__price">￥{{$product->price}}</p>
                         </div>
                     </div>
                 </a>

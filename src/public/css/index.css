@@ -1,10 +1,10 @@
 svg.w-5.h-5 {
-    /*paginateメソッドの矢印の大きさ調整のために追加*/
-    width: 30px;
-    height: 30px;
+  /*paginateメソッドの矢印の大きさ調整のために追加*/
+  width: 30px;
+  height: 30px;
   }
   .products__content{
-    background-color: rgb(249,249,249);
+  background-color: rgb(249,249,249);
 }
 .products__content-title{
   display: flex;
@@ -13,7 +13,7 @@ svg.w-5.h-5 {
   align-items: center;
 }
 .section__title{
-  color:rgb(134,134,134);
+  color:rgb(110, 110, 110);
 }
 .products__add-button{
   background-color:rgb(255,169,41) ;
@@ -28,35 +28,78 @@ svg.w-5.h-5 {
   display: flex;
 }
 .search-form{
-  display:left;
-}
-.search-form__inner{
-
+  padding:10px;
 }
 .search-form__item-input{
-
+  height: 40px;
+  border-radius: 10px;
+  border:none;
 }
 .search-form__button{
-
+  padding: 20px 0px;
 }
 .search-form__button--submit{
-
+  background-color:rgb(255, 220, 30) ;
+  border-radius: 10px;
+  border:none;
+  width:90%;
+  height: 40px;
+}
+.sort-form__title{
+  color:rgb(110, 110, 110);
+  width: 100%;
+}
+.sort-form__select{
+  border-radius: 10px;
+  border:none;
+  width:90%;
+  height: 40px;
 }
 .search-form__modal{
-
+  padding-top: 10px;
 }
 .card-list{
   display:flex;
   flex-wrap:wrap;
   justify-content: space-between;
+  gap:10px;
 }
 .product-card__link{
-  max-width: 30%;
+  width: 300px;
+  height: 300px;
+  text-decoration: none;
 }
 .product-card__inner{
   background-color: white;
-  box-shadow:  0px 3px 10px rgba(0, 0, 0, 0.2);;
+  box-shadow:  0px 3px 10px rgba(0, 0, 0, 0.2);
+  align-items: center;
 }
 .product__image{
   max-width :100%;
+  max-height: 200px;
+  object-fit:cover;
+  object-position: center ;
+  display: block;
+  margin: auto;
+}
+.product__info{
+  align-items: center;
+  justify-content: space-between;
+  display: flex;
+  padding: 10px;
+}
+.product__name{
+  color: rgb(110, 110, 110);
+  text-decoration: none;
+  font-size: 16px;
+}
+.product__price{
+  font-size: 16px;
+  color: rgb(110, 110, 110);
+}
+.product__pagination{
+  display: flex;
+  justify-content: center;
+  padding: 20px 0px;
+
 }
