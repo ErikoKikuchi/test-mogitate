@@ -25,8 +25,8 @@ class ProductRequest extends FormRequest
     {
         //更新の時は画像を任意
         $imageRule = $this->isMethod('patch')
-            ? ['nullable', 'file', 'image', 'mimes:jpeg,png']
-            : ['required', 'file', 'image', 'mimes:jpeg,png'];
+            ? ['nullable', 'file', 'image', 'mimes:jpeg,jpg,png']
+            : ['required', 'file', 'image', 'mimes:jpeg,jpg,png'];
         return [
             'name' => ['required'],
             'price' => ['required','integer','between:0,10000'],

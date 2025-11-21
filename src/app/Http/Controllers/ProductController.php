@@ -44,14 +44,18 @@ class ProductController extends Controller
         if($request->name){
             $query->where('name', 'like', '%' .$request->name .'%');
         }
+        
+        $sort = $request->input('price'); 
 
-        if($request-> price === 'asc'){
+        if($request-> sort === 'asc'){
             $query->orderBy('price','asc');
-        }elseif($request-> price === 'desc'){
+            $sort = '低い順に表示';
+        }elseif($request-> sort === 'desc'){
             $query->orderBy('price','desc');
+            $sort = '高い順に表示';
         }
         $products = $query->paginate(6)->withQueryString();
-        return view('index',compact('products'));
+        return view('index',compact('sort','products'));
     }
 
     public function edit($productId){

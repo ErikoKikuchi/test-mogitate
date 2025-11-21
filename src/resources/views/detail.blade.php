@@ -48,7 +48,7 @@
                      </div>
                     <div class="detail-form__inner-price">
                         <div class="detail-form__inner-price-title">値段</div>
-                        <input class="detail-form__inner-price--input" type="number" name="price" value="{{old('price',$detail->price)}}">
+                        <input class="detail-form__inner-price--input" type="text" name="price" value="{{old('price',$detail->price)}}">
                         <div class = "form__error">
                             @if($errors->has('price'))
                             <div class="form__error--all">

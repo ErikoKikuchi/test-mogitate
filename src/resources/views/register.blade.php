@@ -30,7 +30,7 @@
                 <p class = "register-form__item-title">値段</p>
                 <p class = "register-form__item-alert">必須</p>
             </div>
-                <input class = "register-form__item--input" type="number" name ="price" placeholder = "値段を入力" value="{{old('price')}}">
+                <input class = "register-form__item--input" type="text" name ="price" placeholder = "値段を入力" value="{{old('price')}}">
             <div class = "form__error">
                 @if($errors->has('price'))
                     <div class="form__error--all">

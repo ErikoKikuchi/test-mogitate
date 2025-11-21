@@ -14,16 +14,39 @@
     </div>
     <div class="products__inner">
         <div class="search-form">
-            <form class="search-form__inner" action="/products/search" method="get">
+            <form class="search-form__inner" action="/products/search" method="post" id="searchForm">
                 @csrf
-                <input class ="search-form__item-input" type="text" name="name" placeholder="商品名で検索" value="{{old('name')}}">
+                <input class ="search-form__item-input" type="text" name="name" placeholder="商品名で検索" id="name">
                 <div class="search-form__button">
                     <button class="search-form__button--submit">検索</button>
-                </div>
-                <div class ="search-form__modal">
-                    @livewire('modal',['selectedPrice' =>old('price')])
+                    <h3 class=sort-form__title >価格順で表示</h3>
+                    <select class = "sort-form__select"  name="sort" id="sort" >
+                        <option value = "">価格で並び替え</option>
+                        <option value = "desc" >高い順に表示</option>
+                        <option value = "asc" >低い順に表示</option>
+                    </select>
                 </div>
             </form>
+            <script>
+            const sortSelect = document.getElementById('sort');
+            const nameInput = document.getElementById('name');
+            const form = document.getElementById('searchForm');
+
+            sortSelect.addEventListener('change', function() {
+            // キーワードが空のときだけ自動送信
+            if (nameInput.value.trim() === '') {
+            form.submit();
+            }
+            });
+            </script>
+            @if(!empty($sort))
+             <div class="sort-contents">
+                <p class ="searched-data">{{$sort}}</p>
+                <div class="close-contents">
+                    <a href="/products" class="icon">☒</a>
+                </div>
+            </div>
+            @endif
         </div>
         <div class = "card-list">
             @foreach($products as $product)
