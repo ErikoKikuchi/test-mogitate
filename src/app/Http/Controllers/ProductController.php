@@ -40,6 +40,9 @@ class ProductController extends Controller
         }
     }
     public function search(Request$request){
+        if ($request->isMethod('post')) {
+        return redirect()->route('products.search', $request->all());}
+
         $query = Product::query();
         if($request->name){
             $query->where('name', 'like', '%' .$request->name .'%');

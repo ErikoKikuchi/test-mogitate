@@ -5,6 +5,7 @@ svg.w-5.h-5 {
   }
   .products__content{
   background-color: rgb(249,249,249);
+  overflow-x: hidden;
 }
 .products__content-title{
   display: flex;
@@ -82,14 +83,24 @@ svg.w-5.h-5 {
   text-decoration: none;
 }
 .card-list{
-  display:flex;
-  flex-wrap:wrap;
-  justify-content: space-between;
+  display:grid;
+  grid-template-columns: repeat(3,minmax(300px,1fr));
+  padding:20px;
   gap:10px;
 }
+@media screen and (max-width: 440px){
+  .card-list{
+    grid-template-columns: 1fr;
+  }
+}
+@media screen and (min-width: 441px) and (max-width: 900px){
+  .card-list{
+    grid-template-columns: repeat(2,minmax(300px,1fr));
+  }
+}
 .product-card__link{
-  width: 300px;
-  height: 300px;
+  max-width: 300px;
+  max-height: 300px;
   text-decoration: none;
 }
 .product-card__inner{
